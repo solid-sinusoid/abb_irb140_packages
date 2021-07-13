@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: abb_irb140_support
+    relative_path: urdf/irb140.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/irb140.srdf
+  CONFIG:
+    author_name: narmak
+    author_email: narmak@gmail.com
+    generated_timestamp: 1620071570

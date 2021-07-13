@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<library path="lib/libabb_irb140_my_abb_groups_moveit_ikfast_plugin">
+  <class base_class_type="kinematics::KinematicsBase" name="abb_irb140_my_abb_groups/IKFastKinematicsPlugin" type="abb_irb140_my_abb_groups::IKFastKinematicsPlugin">
+    <description>IKFast61 plugin for closed-form kinematics of abb_irb140 my_abb_groups</description>
+  </class>
+</library>
