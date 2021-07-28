@@ -23,7 +23,7 @@ git clone https://github.com/solid-sinusoid/abb_irb140_packages.git
 ```sh
 roslaunch abb_new_moveit_config demo.launch
 ```
-Для запуска симуляции сначала необходимо запустить Gazebo
+Для запуска симуляции сначала необходимо запустить Gazebo:
 ```sh
 roslaunch abb_irb140_gazebo irb140_gazebo.launch
 ```
@@ -32,7 +32,8 @@ roslaunch abb_irb140_gazebo irb140_gazebo.launch
 roslaunch abb_new_moveit_config abb_new_planing_execution.launch
 ```
 И сразу же **остановить** запуск второго и запустить заново
-Для запуска на реальном роботе манипуляторе 
+
+Для запуска на реальном роботе манипуляторе: 
 ```sh
 roslaunch abb_new_moveit_config moveit_planing_execution sim:=false robot_ip:=111.111.111.1
 ```
