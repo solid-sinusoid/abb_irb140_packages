@@ -34,6 +34,8 @@ roslaunch abb_new_moveit_config abb_new_planing_execution.launch
 И сразу же **остановить** запуск второго и запустить заново
 Для запуска на реальном роботе манипуляторе 
 ```sh
-roslaunch abb_new_moveit_config moveit_planing_execution sim:=false robot_ip:=192.132.100.153
+roslaunch abb_new_moveit_config moveit_planing_execution sim:=false robot_ip:=111.111.111.1
 ```
+Переменная `robot_ip` указана на экране планшета робота.
+
 В данном случа всё должно заработать сразу. Чтобы задаваемые программы исполнялись необходимо включить автоматический режим на роботе и запустить основную программу
