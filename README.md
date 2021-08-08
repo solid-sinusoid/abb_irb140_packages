@@ -19,28 +19,34 @@
 
 Команда установки:
 ```sh
-git clone https://github.com/solid-sinusoid/abb_irb140_packages.git
+$ git clone https://github.com/solid-sinusoid/abb_irb140_packages.git
 ```
-После клонирования репозитория необходимо выполнить команду `catkin_make`
+Для установки остальных пакетов, связанных зависимостью с данным пакетом существует команда `rosdep` 
+
+```
+$ rosdep update
+$ rosdep install --from-paths src / --ignore-src --rosdistro melodic
+$ catkin_make
+```
 
 ### Запуск
 Для запуска Rviz используется следующая команда:
 ```sh
-roslaunch abb_new_moveit_config demo.launch
+$ roslaunch abb_new_moveit_config demo.launch
 ```
 Для запуска симуляции сначала необходимо запустить Gazebo:
 ```sh
-roslaunch abb_irb140_gazebo irb140_gazebo.launch
+$ roslaunch abb_irb140_gazebo irb140_gazebo.launch
 ```
 И следом идёт запуск визуализации
 ```sh
-roslaunch abb_new_moveit_config abb_new_planing_execution.launch
+$ roslaunch abb_new_moveit_config abb_new_planing_execution.launch
 ```
 И сразу же **остановить** запуск второго и запустить заново
 
 Для запуска на реальном роботе манипуляторе: 
 ```sh
-roslaunch abb_new_moveit_config moveit_planing_execution sim:=false robot_ip:=111.111.111.1
+$ roslaunch abb_new_moveit_config moveit_planing_execution sim:=false robot_ip:=111.111.111.1
 ```
 Переменная `robot_ip` указана на экране планшета робота.
 
