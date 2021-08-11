@@ -36,8 +36,7 @@ def all_close(goal, actual, tolerance):
   return True
 
 
-class MoveGroupPythonIntefaceTutorial(object):
-  """MoveGroupPythonIntefaceTutorial"""
+class MoveGroupPythonIntefaceTutorial(object): """MoveGroupPythonIntefaceTutorial"""
   def __init__(self):
     super(MoveGroupPythonIntefaceTutorial, self).__init__()
 
