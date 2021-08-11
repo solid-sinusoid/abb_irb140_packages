@@ -1,7 +1,7 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-
+industrial_core
 venv/
 industrial_core/
 CMakeLists.txt.user
