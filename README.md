@@ -17,6 +17,7 @@
 ### Установка
 Для установки необходимо иметь Ubuntu 18.04, ROS Melodic, MoveIt и QTCreator 4 с установленным ROS-I плагином
 
+
 Команда установки:
 ```sh
 $ git clone https://github.com/solid-sinusoid/abb_irb140_packages.git
