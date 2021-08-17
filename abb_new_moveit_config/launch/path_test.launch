@@ -2,5 +2,5 @@
 
   <node name="descartes_test" pkg="abb_new_moveit_config" type="descartes_test" respawn="false" output="screen">
   </node>
-
+ <!--test ssh -->
 </launch>
