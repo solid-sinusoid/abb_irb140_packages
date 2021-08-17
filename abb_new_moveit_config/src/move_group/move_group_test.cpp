@@ -155,20 +155,17 @@ int main(int argc, char** argv)
 
   geometry_msgs::Pose target_pose3 = start_pose2;
   
-  for (int i = 0; i < degree; ++i) {
-    
-  }
   
-  /*target_pose3.position.x -= 0.2;
+  target_pose3.position.x -= 0.2;
   waypoints.push_back(target_pose3);  // down
 
   target_pose3.position.y -= 0.2;
   waypoints.push_back(target_pose3);  // right
   target_pose3.position.x += 0.2;
   waypoints.push_back(target_pose3);
-  //target_pose3.position.z += 0.2;
+  target_pose3.position.z += 0.2;
   target_pose3.position.y += 0.2;
-  //target_pose3.position.x -= 0.2;
+  target_pose3.position.x -= 0.2;
   waypoints.push_back(target_pose3);  // up and left*/
 
   move_group.setMaxVelocityScalingFactor(0.3);
