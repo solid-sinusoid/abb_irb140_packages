@@ -1,29 +1,35 @@
 <launch>
-  <!-- The planning and execution components of MoveIt! configured to run -->
-  <!-- using the ROS-Industrial interface. -->
- 
-  <!-- Non-standard joint names:
-       - Create a file [robot_moveit_config]/config/joint_names.yaml
-           controller_joint_names: [joint_1, joint_2, ... joint_N] 
-       - Update with joint names for your robot (in order expected by rbt controller)
-       - and uncomment the following line: -->
-  <arg name="debug" default="false" />
+  <!-- The planning and execution components of MoveIt! configured to run
+       against a Gazebo based, ros_control compatible simulation of the IRB 140.
+
+       This depends on the corresponding 'abb_irb140_gazebo' pkg to be installed
+       first. This dependency is not expressed in the MoveIt config pkg manifest,
+       as adding a run_depend there would cause Gazebo to be unconditionally
+       installed, even if the user never intends to use the MoveIt config with it.
+
+       Instead, installation is left to the user, as a kind of poor-mans optional
+       dependency.
+
+       Finally, this launch file assumes that gazebo is already running and that 
+       the IRB 140 and ros_controllers are loaded. This can be achieved by 
+       executing the the following command:
+
+       roslaunch abb_irb140_gazebo irb140_gazebo.launch
+
+  -->
+
+	 <arg name="debug" default="false" />
   <rosparam command="load" file="$(find abb_irb140_support)/config/joint_names_irb140.yaml" />
- 
 
   <!-- By default, we do not start a database (it can be large) -->
   <arg name="db" default="false" />
   <!-- Allow user to specify database location -->
   <arg name="db_path" default="$(find abb_new_moveit_config)/default_warehouse_mongo_db" />
 
-  <!-- load the robot_description parameter before launching ROS-I nodes -->
-  <include file="$(find abb_new_moveit_config)/launch/planning_context.launch" >
-    <arg name="load_robot_description" value="true" />
+  <!-- don't let planning_context load description, we've already done it -->
+  <include file="$(find abb_new_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="false" />
   </include>
-
-
-  <!-- publish the robot state (tf transforms) -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
   <include file="$(find abb_new_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
@@ -33,10 +39,9 @@
     <arg name="rviz_config" value="$(find abb_new_moveit_config)/launch/moveit.rviz"/>
     <arg name="debug" value="$(arg debug)"/>
   </include>
-
+  
   <!-- If database loading was enabled, start mongodb as well -->
   <include file="$(find abb_new_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">
     <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
   </include>
-
 </launch>
