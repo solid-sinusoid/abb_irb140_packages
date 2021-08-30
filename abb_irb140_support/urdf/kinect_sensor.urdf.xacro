@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:macro name="kinect_description" params="prefix">
+
+    <link name="${prefix}kinect_link">
+        <inertial>
+            <mass value="0.564"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="0.003881243" ixy="0.0" ixz="0.0"
+                     iyy="0.000498940" iyz="0.0"
+                     izz="0.003879257"/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.05 0.2 0.05"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="-0.025 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.2 0.05"/>
+            </geometry>
+            <material name="kinect_gray">
+                <color rgba="0.2 0.2 0.2 0.6"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="${prefix}camera_link_optical"/>
+
+    <joint name="${prefix}camera_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+        <parent link="${prefix}kinect_link"/>
+        <child link="${prefix}camera_link_optical"/>
+    </joint>
+
+    <joint name="${prefix}kinect_joint" type="fixed">
+        <axis xyz="0 1 0"/>
+        <origin xyz="0.03 -0.1 0.0" rpy="${-pi/2} 0.0 0.0"/>
+        <parent link="${prefix}link_5"/>
+        <child link="${prefix}kinect_link"/>
+        <!--limit lower="0" upper="0" effort="0" velocity="0"/-->
+    </joint>
+
+    <gazebo reference="${prefix}kinect_link">
+        <material>Gazebo/Gray</material>
+        <turnGravityOff>true</turnGravityOff>
+      <sensor name="kinect_camera" type="depth">
+          <update_rate>20</update_rate>
+          <camera>
+              <horizontal_fov>1.047198</horizontal_fov>
+              <image>
+                  <width>640</width>
+                  <height>480</height>
+                  <format>R8G8B8</format>
+              </image>
+              <clip>
+                  <near>0.05</near>
+                  <far>3</far>
+              </clip>
+          </camera>
+          <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+              <baseline>0.2</baseline>
+              <alwaysOn>true</alwaysOn>
+              <updateRate>1.0</updateRate>
+              <cameraName>kinect</cameraName>
+              <imageTopicName>/kinect/color/image_raw</imageTopicName>
+              <cameraInfoTopicName>/kinect/color/camera_info</cameraInfoTopicName>
+              <depthImageTopicName>/kinect/depth/image_raw</depthImageTopicName>
+              <depthImageInfoTopicName>/kinect/depth/camera_info</depthImageInfoTopicName>
+              <pointCloudTopicName>/kinect/depth/points</pointCloudTopicName>
+              <frameName>camera_link_optical</frameName>
+              <pointCloudCutoff>0.5</pointCloudCutoff>
+              <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+              <distrotionK1>0.00000001</distrotionK1>
+              <distrotionK2>0.00000001</distrotionK2>
+              <distrotionK3>0.00000001</distrotionK3>
+              <distrotionT1>0.00000001</distrotionT1>
+              <distrotionT2>0.00000001</distrotionT2>
+              <CxPrime>0</CxPrime>
+              <Cx>0</Cx>
+              <Cy>0</Cy>
+              <focalLength>0</focalLength>
+              <hackBaseline>0</hackBaseline>
+          </plugin>
+      </sensor>
+    </gazebo>
+
+</xacro:macro>
+</robot>

@@ -3,7 +3,13 @@
 <robot name="abb_irb140" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find abb_irb140_gazebo)/urdf/irb140_macro.xacro"/>	
   <xacro:abb_irb140_g prefix=""/>
+  <xacro:include filename="$(find abb_irb140_support)/urdf/kinect_sensor.urdf.xacro"/>
+  <xacro:kinect_description prefix=""/>
 
+
+    <!--gazebo reference="kinect_joint">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo-->
   <!-- Fix robot to Gazebo world -->
   <link name="world"/>
   <joint name="world-base_link-fixed" type="fixed">

@@ -5,17 +5,17 @@
     <link name="${prefix}base_link">
     <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="-0.082039 0.00040203 0.059925"
         rpy="0 0 0" />
       <mass
-        value="12" />
+        value="96.79" />
       <inertia
-        ixx="1E-12"
-        ixy="1E-12"
-        ixz="1E-12"
-        iyy="1E-12"
-        iyz="1E-12"
-        izz="1E-12" />
+        ixx="0.81512"
+        ixy="-7.8406E-05"
+        ixz="0.057274"
+        iyy="1.3048"
+        iyz="0.0065755"
+        izz="1.9226" />
     </inertial>
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -220,6 +220,25 @@
         </collision>
     </link>
     <link name="${prefix}tool0"/>
+    <!--link name="${prefix}kinect_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </visual>
+    </link-->
+    <!--link name="${prefix}platform">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.5 0.5 1.0"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.5 0.5 1.0"/>
+            </geometry>
+        </collision>
+    </link-->
     <!-- end of link list -->
 
     <!-- joint list -->
@@ -271,6 +290,22 @@
         <child link="${prefix}tool0"/>
         <origin xyz="0.05256 0 0" rpy="0 1.57079632679 0"/>
     </joint>
+    <!--joint name="${prefix}kinect_joint" type="fixed">
+        <origin xyz="0 -0.1 0" rpy="0 0 0"/>
+        <parent link="${prefix}link_5"/>
+        <child link="${prefix}kinect_link"/>
+    </joint-->
+    <!--joint name="${prefix}platform_joint" type="fixed">
+        <origin xyz="0.08 0 0.5" rpy="0 0 0"/>
+        <parent link="${prefix}platform"/>
+        <child link="${prefix}base_link"/>
+    </joint-->
+    <!--link name="${prefix}ground"/>
+    <joint name="${prefix}connnect_to_ground" type="fixed">
+        <orgign xyz="0 0 0.5" rpy="0 0 0"/>
+        <parent link="${prefix}ground"/>
+        <child link="${prefix}platform"/>
+    </joint-->
     <!-- end of joint list -->
 
     <!-- ROS base_link to ABB World Coordinates transform -->

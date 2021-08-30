@@ -3,4 +3,6 @@
 <robot name="abb_irb140" xmlns:xacro="http://ros.org/wiki/xacro">
 	<xacro:include filename="$(find abb_irb140_support)/urdf/irb140_macro.xacro"/>
 	<xacro:abb_irb140 prefix=""/>
+        <xacro:include filename="$(find abb_irb140_support)/urdf/kinect_sensor.urdf.xacro"/>
+        <xacro:kinect_description prefix=""/>
 </robot>
