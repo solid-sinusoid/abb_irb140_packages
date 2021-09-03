@@ -72,7 +72,7 @@
               <pointCloudTopicName>/kinect/depth/points</pointCloudTopicName>
               <frameName>camera_link_optical</frameName>
               <pointCloudCutoff>0.5</pointCloudCutoff>
-              <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+              <!--pointCloudCutoffMax>3.0</pointCloudCutoffMax-->
               <distrotionK1>0.00000001</distrotionK1>
               <distrotionK2>0.00000001</distrotionK2>
               <distrotionK3>0.00000001</distrotionK3>
