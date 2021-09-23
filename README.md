@@ -17,11 +17,9 @@
 ### Установка
 Для установки рекомендуется иметь Ubuntu 18.04, ROS Melodiс, [MoveIt][moveit_install] и [QTCreator 4][qt_ros] с установленным ROS-I плагином
 
-Перед установкой необходимо связать SSH ключ вашей операционной системы с профилем GiHub
-
 Команда установки:
 ```sh
-$ git clone git@github.com:solid-sinusoid/abb_irb140_packages.git
+$ git clone https://github.com/solid-sinusoid/abb_irb140_packages.git
 ```
 Далее необходимо удалить папки `descartes` и `industrial_core` и скачать их из вышеперечисленных ссылок с гитхаба
 
