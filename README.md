@@ -44,7 +44,6 @@ $ roslaunch abb_irb140_gazebo irb140_gazebo.launch
 ```sh
 $ roslaunch abb_new_moveit_config abb_new_planing_execution.launch
 ```
-И сразу же **остановить** запуск второго и запустить заново
 
 Для запуска на реальном роботе манипуляторе: 
 ```sh
