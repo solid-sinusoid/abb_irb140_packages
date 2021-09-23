@@ -25,12 +25,6 @@ $ git clone git@github.com:solid-sinusoid/abb_irb140_packages.git
 ```
 Далее необходимо удалить папки `descartes` и `industrial_core` и скачать их из вышеперечисленных ссылок с гитхаба
 
-или существует команда Git для клонирования репозитория с подмодулями коими является `descartes` и `industrial_core`
-
-```sg
-$ git --recurse-submodules clone git@github.com:solid-sinusoid/abb_irb140_packages.git
-```
-
 Для проверки зависимостей пакета существует команда `rosdep` 
 
 ```
